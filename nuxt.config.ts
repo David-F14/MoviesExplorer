@@ -10,9 +10,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
   runtimeConfig: {
-    app: {
-      TMDB_API_KEY: process.env.TMDB_API_KEY,
-      TMDB_BASE_IMAGE_URL: process.env.TMDB_BASE_IMAGE_URL
-    }       
+    TMDB_API_KEY: process.env.TMDB_API_KEY,
+    TMDB_BASE_IMAGE_URL: process.env.TMDB_BASE_IMAGE_URL
 },
 })

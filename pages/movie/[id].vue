@@ -4,23 +4,23 @@ definePageMeta({
     layout:'custom'
 });
 
-const movieid = ref(123);
-const title = ref("batman");
-const date = ref("20-01-2023");
-const poster = ref("https://image.tmdb.org/t/p/w600_and_h900_bestv2/74xTEgt7R36Fpooo50r9T25onhq.jpg");
-const revenue = ref(156156);
-const overview = ref ("testsssdsdsdsd");
+const TMDB_BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w300"; 
+
+const route = useRoute();
+
+const {data : movie, error} = await useFetch(`/api/movies/${route.params.id}`);
+console.log('movie', movie);
+
 </script>
 
 <template>
     <div>
-        <MovieDetail 
-            :movieid="movieid"
-            :title="title"
-            :date="date"
-            :poster="poster"
-            :revenue="revenue"
-            :overview="overview"
+        <MovieDetail             
+            :title="movie.title"
+            :date="movie.release_date"
+            :poster="TMDB_BASE_IMAGE_URL + movie.poster_path"
+            :revenue="movie.revenue"
+            :overview="movie.overview"
         />
     </div>
 </template>

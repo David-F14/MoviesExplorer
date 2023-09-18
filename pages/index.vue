@@ -10,15 +10,10 @@ const searchMovie = (searchInput) => {
     }    
 };
 
-// fetch movies
-const runtimeConfig = useRuntimeConfig();
+// const {TMDB_BASE_IMAGE_URL} = useRuntimeConfig(); // problème de refresh avec le hotReload
+const TMDB_BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w300"; 
+const {data : movies, error} = await useFetch("/api/movies");
 
-const {data:movies, error} = await axios.get('https://api.themoviedb.org/3/movie/now_playing', {
-        params: {
-          api_key: runtimeConfig.app.TMDB_API_KEY,
-          language: 'fr-FR', // Langue des données (vous pouvez la modifier)
-        }
-      });
 </script>
 
 <template>
@@ -26,11 +21,11 @@ const {data:movies, error} = await axios.get('https://api.themoviedb.org/3/movie
         <SearchBar @search-movie="searchMovie" :searchError="searchError" />
         <div class="grid md:grid-cols-4 sm:grid-cols-1 justify-items-center bg-gray-800">
             <div v-for="movie in movies.results">
-                <MovieCard 
+                <MovieCard
                     :movieid="movie.id"
                     :title="movie.title"
                     :date="movie.release_date"
-                    :poster="runtimeConfig.app.TMDB_BASE_IMAGE_URL + movie.poster_path"
+                    :poster="TMDB_BASE_IMAGE_URL + movie.poster_path"
                 />
             </div>
         </div>

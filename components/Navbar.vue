@@ -12,7 +12,7 @@
               >Films</NuxtLink
             >
             <NuxtLink
-              to="/login"
+              to="/"
               class="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-red-500 focus:outline-none focus:bg-red-500"
               >Genre</NuxtLink
             >

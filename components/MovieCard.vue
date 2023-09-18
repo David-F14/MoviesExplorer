@@ -7,9 +7,9 @@
         <div class="p-1 py-4">
             <h3 v-if="title" class="font-semibold text-lg mb-2 text-center text-white">{{ title }}</h3>
             <div class="overflow-hidden mb-4">
-                <img class="h-400 w-300 object-cover" 
+                <img v-if="poster" class="h-400 w-300 object-cover" 
                 :src="poster" 
-                alt="Placeholder Image" />
+                alt="Placeholder Image" /> 
             </div>
             <p class="text-gray-500 text-sm mb-2 px-2">Release Date: {{ date }}</p>
             <div class="mt-4 p-2 text-right">
