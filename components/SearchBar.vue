@@ -1,6 +1,7 @@
 <script setup>
 const searchInput = ref("");
 defineProps(["searchError"]);
+
 </script>
 
 <template>
@@ -13,6 +14,7 @@ defineProps(["searchError"]);
                     placeholder="Search Movie..."
                     v-model.lazy="searchInput" />
                 <button
+                    ref="searchButton"
                     class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded-r-full"
                     type="submit"
                     @click="$emit('searchMovie', searchInput)">

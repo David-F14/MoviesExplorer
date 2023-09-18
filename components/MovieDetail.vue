@@ -1,5 +1,5 @@
 <script setup>
-defineProps(["title", "date", "poster", "revenue", "overview"]);
+defineProps(["title", "date", "poster", "voteAverage", "overview", "trailer"]);
 </script>
 
 <template>
@@ -19,21 +19,16 @@ defineProps(["title", "date", "poster", "revenue", "overview"]);
         {{ overview }}
       </p>
 
-      <p class="text-gray-500 text-md">Revenue: $ {{ revenue }}</p>
+      <p class="text-gray-500 text-md">Vote : {{ voteAverage }} / 10</p>
 
       <div class="mt-6">
         <NuxtLink
-          to="https://www.youtube.com/watch?v=ZvAfmjx3sBs"
+          :to="`https://www.youtube.com/watch?v=${trailer}`"
           target="_blank"
-          class="bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-2 px-4 rounded"
+          class="bg-red-500 hover:bg-red-500 text-white font-medium py-2 px-4 rounded"
         >
           Watch Trailer
         </NuxtLink>
-        <button
-          class="bg-rose-500 hover:bg-rose-600 text-white font-medium py-2 px-4 rounded m-5"
-        >
-          Buy Now
-        </button>
       </div>
     </div>
   </div>

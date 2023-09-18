@@ -1,18 +1,22 @@
 <script setup>
-import axios from 'axios';
+
+const movies = ref([]);
 
 const searchError = ref(false);
-const searchMovie = (searchInput) => {
-    console.log("Search Text:", searchInput);
+const searchMovie = async (searchInput) => {
     searchError.value = searchInput === "";
     if (!searchError.value){
-        // search movies
+        console.log("Search Text:", searchInput);
+        const {data, error} = await useFetch(`/api/movies/search?searchInput=${searchInput}`);        
+        movies.value = data.value;
     }    
 };
 
 // const {TMDB_BASE_IMAGE_URL} = useRuntimeConfig(); // problème de refresh avec le hotReload
 const TMDB_BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w300"; 
-const {data : movies, error} = await useFetch("/api/movies");
+
+const {data, error} = await useFetch("/api/movies");
+movies.value = data.value;
 
 </script>
 
@@ -25,7 +29,7 @@ const {data : movies, error} = await useFetch("/api/movies");
                     :movieid="movie.id"
                     :title="movie.title"
                     :date="movie.release_date"
-                    :poster="TMDB_BASE_IMAGE_URL + movie.poster_path"
+                    :poster="TMDB_BASE_IMAGE_URL + movie.poster_path"                    
                 />
             </div>
         </div>

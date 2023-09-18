@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div>
+    <div class="bg-auto">
         <Navbar />
         <Hero />
         <slot />
