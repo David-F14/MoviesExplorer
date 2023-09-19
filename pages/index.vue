@@ -5,8 +5,7 @@ const movies = ref([]);
 const searchError = ref(false);
 const searchMovie = async (searchInput) => {
     searchError.value = searchInput === "";
-    if (!searchError.value){
-        console.log("Search Text:", searchInput);
+    if (!searchError.value){        
         const {data, error} = await useFetch(`/api/movies/search?searchInput=${searchInput}`);        
         movies.value = data.value;
     } else {

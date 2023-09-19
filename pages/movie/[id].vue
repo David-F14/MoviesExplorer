@@ -10,7 +10,6 @@ const route = useRoute();
 
 // Movie Detail
 const {data : movie, error} = await useFetch(`/api/movies/${route.params.id}`);
-console.log('movie detail', movie);
 
 // Trailer
 const {data : video} = await useFetch(`/api/movies/trailer/${route.params.id}`);
