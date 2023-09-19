@@ -1,5 +1,5 @@
 <script setup>
-    defineProps(["movieid", "title", "date", "poster"]);        
+    defineProps(["id", "title", "date", "poster", "type"]);
 </script>
 
 <template>
@@ -13,7 +13,7 @@
             </div>
             <p class="text-gray-500 text-sm mb-2 px-2">Release Date: {{ date }}</p>
             <div class="mt-4 p-2 text-right">
-                <NuxtLink :to="`movie/${movieid}`" class="bg-red-500 hover:bg-red-700 text-white font-medium py-2 px-4 rounded"
+                <NuxtLink :to="`${type}/${id}`" class="bg-red-500 hover:bg-red-700 text-white font-medium py-2 px-4 rounded"
                     >See more</NuxtLink
                 >
             </div>

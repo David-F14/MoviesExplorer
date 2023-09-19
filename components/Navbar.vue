@@ -33,22 +33,28 @@ export default {
                             <div
                                 v-if="isOpen"
                                 @click.away="isOpen = false"
-                                class="absolute mt-2 w-40 bg-white border border-gray-300 rounded-lg shadow-lg">
+                                class="absolute bg-gray-800 mt-2 w-40 text-white hover:text-red-500 border border-gray-300 rounded-lg shadow-lg">
                                 <ul class="py-2">
                                     <li>
-                                        <NuxtLink to="/genre/action" class="block px-4 py-2 hover:bg-gray-200"> Action </NuxtLink>
+                                        <NuxtLink to="/" class="bg-gray-800 block px-4 py-2 hover:bg-gray-200"> Action </NuxtLink>
                                     </li>
                                     <li>
-                                        <NuxtLink to="/genre/aventure" class="block px-4 py-2 hover:bg-gray-200"> Aventure </NuxtLink>
+                                        <NuxtLink to="/" class="block px-4 py-2 hover:bg-gray-200"> Adventure </NuxtLink>
                                     </li>
+                                    <li>
+                                        <NuxtLink to="/" class="block px-4 py-2 hover:bg-gray-200"> Animation </NuxtLink>
+                                    </li>
+                                    <!-- <li>
+                                        <NuxtLink :to="{ name: '/', params: {genreQuery:'comdy'}}" class="block px-4 py-2 hover:bg-gray-200"> Comedy </NuxtLink>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
 
-                        <NuxtLink to="/acteurs" class="text-white hover:text-red-500"> Actors </NuxtLink>
+                        <NuxtLink to="/actors" class="text-white hover:text-red-500"> Actors </NuxtLink>
                     </div>
-                    
-                    <div class="flex items-center space-x-2">                        
+
+                    <div class="flex items-center space-x-2">
                         <span class="text-white"
                             >FR<svg
                                 class="w-4 h-4 inline-block ml-1"

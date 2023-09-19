@@ -25,14 +25,15 @@ movies.value = data.value;
 
 <template>
     <div>
-        <SearchBar @search-movie="searchMovie" :searchError="searchError" />
+        <SearchBar @search-element="searchMovie" :searchError="searchError" />
         <div class="grid md:grid-cols-4 sm:grid-cols-1 justify-items-center bg-gray-800">
             <div v-for="movie in movies.results">
-                <MovieCard
-                    :movieid="movie.id"
+                <Card
+                    :id="movie.id"
                     :title="movie.title"
                     :date="movie.release_date"
                     :poster="TMDB_BASE_IMAGE_URL + movie.poster_path"
+                    :type="'movie'"
                 />
             </div>
         </div>
