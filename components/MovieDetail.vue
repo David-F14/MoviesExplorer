@@ -1,35 +1,53 @@
 <script setup>
-defineProps(["title", "date", "poster", "voteAverage", "overview", "trailer"]);
+const props = defineProps(["title", "date", "poster", "voteAvg", "voteCount", "overview", "trailer", "genres"]);
+const genresAsString = props.genres?.map((genre) => genre.name).join(", ");
 </script>
 
 <template>
-  <div class="grid sm:grid-cols-3 gap-7 justify-items-center m-10">    
-    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-      <img
-        class="h-400 w-full object-cover"
-        :src="poster"
-        alt="Placeholder Image"
-      />
-    </div>
-    
-    <div class="sm:col-span-2 mx-6">
-      <h1 class="font-bold text-2xl mb-5">{{ title }}</h1>
-      <h3 class="font-semibold text-lg mb-5">Release Date: {{ date }}</h3>
-      <p class="text-gray-500 text-md mb-8">
-        {{ overview }}
-      </p>
+    <div class="bg-black p-2 pb-10">
+        <div class="container mx-auto mt-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- En-tête prenant toute la largeur -->
+                <div class="col-span-full">
+                    <h2 class="title text-4xl text-center text-white font-semibold mb-4">{{ title }}</h2>
+                </div>
+            </div>
 
-      <p class="text-gray-500 text-md">Vote : {{ voteAverage }} / 10</p>
+            <div class="grid sm:grid-cols-3 gap-7 justify-items-center m-10">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img class="h-400 w-full object-cover" :src="poster" alt="Placeholder Image" />
+                </div>
 
-      <div class="mt-6">
-        <NuxtLink
-          :to="`https://www.youtube.com/watch?v=${trailer}`"
-          target="_blank"
-          class="bg-red-500 hover:bg-red-500 text-white font-medium py-2 px-4 rounded"
-        >
-          Watch Trailer
-        </NuxtLink>
-      </div>
+                <div class="sm:col-span-2 mx-6">
+                    <h3 class="font-semibold text-lg text-gray-400 mb-5">{{ date }}</h3>
+                    <p class="text-gray-400 text-lg py-3">{{ genresAsString }}</p>
+                    <p class="text-gray-400 text-md py-3">
+                        {{ overview }}
+                    </p>
+
+                    <p class="text-gray-400 text-md py-3">Note : {{ voteAvg }} / 10 (Total vote : {{ voteCount }})</p>
+
+                    <div class="mt-8">
+                        <NuxtLink
+                            :to="`https://www.youtube.com/watch?v=${trailer}`"
+                            target="_blank"
+                            class="bg-red-500 hover:bg-red-500 text-white font-medium py-2 px-4 rounded">
+                            Watch Trailer
+                        </NuxtLink>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
+
+<style scoped>
+.title {
+    display: inline-block;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid rgb(239 68 68);
+    border-bottom: 1px solid rgb(239 68 68);
+}
+</style>

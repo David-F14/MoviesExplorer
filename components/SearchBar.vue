@@ -5,7 +5,7 @@ defineProps(["searchError"]);
 </script>
 
 <template>
-    <section class="search-section bg-gray-800 py-4">
+    <section class="search-section bg-gray-800">
         <div class="container mx-auto md:px-40 px-5">
             <div class="flex">
                 <input
@@ -21,9 +21,14 @@ defineProps(["searchError"]);
                     Search
                 </button>
             </div>
-            <span v-if="searchError" class="text-red-700 px-4 py-3" role="alert"> This field is required </span>
+            <!-- <span v-if="searchError" class="text-red-700 px-4 py-3" role="alert"> This field is required </span> -->
         </div>
     </section>
 </template>
 
-<style lang="css" scoped></style>
+<style scoped>
+.search-section {
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+}
+</style>

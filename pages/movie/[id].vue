@@ -10,6 +10,7 @@ const route = useRoute();
 
 // Movie Detail
 const {data : movie, error} = await useFetch(`/api/movies/${route.params.id}`);
+console.log('movie detail', movie);
 
 // Trailer
 const {data : video} = await useFetch(`/api/movies/trailer/${route.params.id}`);
@@ -33,9 +34,11 @@ const trailer = computed(() => {
             :title="movie.title"
             :date="movie.release_date"
             :poster="TMDB_BASE_IMAGE_URL + movie.poster_path"
-            :voteAverage="movie.vote_average"
+            :voteAvg="movie.vote_average"
+            :voteCount="movie.vote_count"
             :overview="movie.overview"
             :trailer="trailer"
+            :genres="movie.genres"
         />
     </div>
 </template>
