@@ -3,7 +3,9 @@ export default defineEventHandler(async (event) => {
     const movieId = event?.context?.params?.id;
 
     try {
-        return await $fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${TMDB_API_KEY}`);
+        return await $fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${TMDB_API_KEY}`, {params: {
+            append_to_response: 'credits'
+        }});
     } catch (error){
         console.error(error);
         return null;

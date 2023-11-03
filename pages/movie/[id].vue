@@ -10,6 +10,7 @@ const route = useRoute();
 
 // Movie Detail
 const {data : movie, error} = await useFetch(`/api/movies/${route.params.id}`);
+console.log('movie', movie);
 
 // Trailer
 const {data : video} = await useFetch(`/api/movies/trailer/${route.params.id}`);
@@ -38,6 +39,7 @@ const trailer = computed(() => {
             :overview="movie.overview"
             :trailer="trailer"
             :genres="movie.genres"
+            :credits="movie.credits"
         />
     </div>
 </template>
